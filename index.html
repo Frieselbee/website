@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVS_Abgabe_14_LFries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <fieldset id="fieldset_box">
+        <legend>Login Gruppe14</legend>
+        <label for="fname">Vorname:  </label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Nachname:</label>
+        <input type="text" id="lname" name="lname"><br><br>
+        <label for="email">Passwort:</label>
+        <input type="text" id="text" name="text"><br><br>
+        <button id="login" onclick="visible()" type="button">Bestätigen</button>
+    </fieldset>
+    
+    <video id="myVideo">
+        <source src="media/rickrolled.mp4" type="video/mp4">
+        Dein Browser unterstützt leider kein HTML5-Video
+    </video>
+    <div id="beschriftung">
+        <h1 id="text" style="color: black; text-align: center;"><p>Niemand rickrolled meine Meike ohne Konsequenzen!</p></h1>
+    </div>
+    
+</body>
+
+
+<script>
+
+    function visible(){
+
+       document.getElementById('myVideo').style.visibility = 'visible';
+       document.getElementById('beschriftung').style.visibility = 'visible';
+
+       letsgo(); 
+            
+    }
+
+    function letsgo(){
+        
+        var myVideo = document.getElementById('myVideo');
+        myVideo.play();
+         
+    }
+
+
+</script>
+
+</html>
