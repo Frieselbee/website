@@ -92,7 +92,7 @@
         if (parseInt(field.style.bottom) >=0 && parseInt(field.style.bottom) < window.innerHeight-120) {
             field.style.bottom = (parseInt(field.style.bottom) + 2) + 'px';
             setTimeout(bewegungup, 25);
-        } else if (parseInt(field.style.bottom) == window.innerHeight-120){
+        } else{
             bewegungdown();
         }
     }
