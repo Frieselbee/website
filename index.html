@@ -9,11 +9,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="strobe()">
+
+    <div id="beschriftung" style="bottom: 0px;">
+        <h1 id="text" style="color: white; text-align: center;">
+            <p>Niemand rickrolled meine Meike ohne Konsequenzen!</p>
+        </h1>
+    </div>
 
     <fieldset id="fieldset_box">
         <legend>Login Gruppe14</legend>
-        <label for="fname">Vorname:  </label>
+        <label for="fname">Vorname: </label>
         <input type="text" id="fname" name="fname"><br><br>
         <label for="lname">Nachname:</label>
         <input type="text" id="lname" name="lname"><br><br>
@@ -21,34 +27,87 @@
         <input type="text" id="text" name="text"><br><br>
         <button id="login" onclick="visible()" type="button">Bestätigen</button>
     </fieldset>
-    
-    <video id="myVideo">
-        <source src="https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4" type="video/mp4">
+
+    <video loop id="myVideo">
+        <source
+            src="https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4#t=1"
+            type="video/mp4">
         Dein Browser unterstützt leider kein HTML5-Video
     </video>
-    <div id="beschriftung">
-        <h1 id="text" style="color: black; text-align: center;"><p>Niemand rickrolled meine Meike ohne Konsequenzen!</p></h1>
-    </div>
-    
+
+
 </body>
 
 
 <script>
 
-    function visible(){
+    function visible() {
+        document.getElementById('fieldset_box').style.display = 'none';
+        document.getElementById('myVideo').style.visibility = 'visible';
+        document.getElementById('myVideo').play();
+        document.getElementById('beschriftung').style.visibility = 'visible';
 
-       document.getElementById('myVideo').style.visibility = 'visible';
-       document.getElementById('beschriftung').style.visibility = 'visible';
+        bewegungup();
 
-       letsgo(); 
-            
     }
 
-    function letsgo(){
-        
+    function letsgo() {
+
         var myVideo = document.getElementById('myVideo');
         myVideo.play();
-         
+
+    }
+
+    function strobe() {
+
+        var text = document.getElementById('text');
+
+        if (text.style.color == "white") {
+            text.style.color = "yellow";
+            setTimeout(strobe, 200);
+        } else if (text.style.color == "yellow") {
+            text.style.color = "orange"
+            setTimeout(strobe, 300);
+        } else if (text.style.color == "orange") {
+            text.style.color = "red"
+            setTimeout(strobe, 200);
+        } else if (text.style.color == "red") {
+            text.style.color = "violet"
+            setTimeout(strobe, 200);
+        } else if (text.style.color == "violet") {
+            text.style.color = "blue"
+            setTimeout(strobe, 300);
+        } else if (text.style.color == "blue") {
+            text.style.color = "green"
+            setTimeout(strobe, 200);
+        } else if (text.style.color == "green") {
+            text.style.color = "yellow"
+            setTimeout(strobe, 300);
+        }
+    }
+
+    var field = document.getElementById('beschriftung');
+
+    function bewegungup() {
+        if (parseInt(field.style.bottom) >=0 && parseInt(field.style.bottom) < window.innerHeight-120) {
+            field.style.bottom = (parseInt(field.style.bottom) + 2) + 'px';
+            setTimeout(bewegungup, 25);
+        } else if (parseInt(field.style.bottom) == window.innerHeight-120){
+            bewegungdown();
+        }
+    }
+    
+    function bewegungdown(){
+
+        if(parseInt(field.style.bottom)==0){
+            bewegungup();
+        }else if (parseInt(field.style.bottom)>0){
+            field.style.bottom = (parseInt(field.style.bottom) -2) + 'px';
+            setTimeout(bewegungdown,25);
+        }
+
+
+
     }
 
 
